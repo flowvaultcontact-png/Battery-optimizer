@@ -141,8 +141,6 @@ That's the entire dependency list — no PyTorch, no RDKit, no external APIs. `j
 
 Verified while preparing this README on Python 3.12 (Linux, CPU-only, single core) with `jax==0.11.0`.
 
-> **Heads up on `save_dir`:** the discovery-log writer at the bottom of the script currently hard-codes `save_dir = "/home/z/my-project/download"`. Change this to a path that exists on your machine (or make it relative, e.g. `"./download"`) before running, or the three output files just won't be written where you expect.
-
 ## Quick start
 
 ```bash
