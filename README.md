@@ -366,9 +366,9 @@ If this project is useful in your work, please cite:
 ```bibtex
 @misc{project_prometheus_energy_materials,
   title  = {Project PROMETHEUS: Universal Continuous Energy Materials Discovery Engine},
-  author = {<your name here>},
+  author = {Stijn},
   year   = {2026},
-  url    = {<your repository URL here>}
+  url    = {https://github.com/flowvaultcontact-png/Battery-optimizer}
 }
 ```
 
