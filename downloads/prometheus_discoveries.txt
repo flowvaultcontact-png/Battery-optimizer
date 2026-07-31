@@ -1,0 +1,38 @@
+PROJECT PROMETHEUS -- FULL DISCOVERY LOG
+==========================================================================================
+Frozen PV target       : bandgap = 1.34 eV (Shockley-Queisser)
+Frozen Battery target  : storage = 450.0 mAh/g
+Frozen Stability target: -4.5 eV (Goldschmidt-ideal)
+Coherency tolerance    : 0.2
+Total iterations       : 15
+Incoherent (rejected)  : 7
+Chemistry-invalid      : 0
+==========================================================================================
+
+
+  ABX3-style unit cell for NaAlPC  (iter 1)
+
+        +-----+-----+
+        |     |     |
+        |  Na |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   C |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Na  [A-site cation]  r=1.66Å  EN=0.93  mass=23.0  cost=$5.0/kg  tox=0.30
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  C  [X-site anion]  r=0.76Å  EN=2.55  mass=12.0  cost=$10.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 2.984 eV   (target 1.34 eV)
+    Storage        = 500.0 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.270
+    Battery score  = 0.286
+    Stability      = 0.000
+    Cost penalty   = 0.024
+  Gates: chemistry=VALID  coherency=INCOHERENT

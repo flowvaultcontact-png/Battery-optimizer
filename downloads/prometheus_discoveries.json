@@ -1,0 +1,1298 @@
+{
+  "metadata": {
+    "total_iterations": 15,
+    "frozen_target_bandgap_eV": 1.34,
+    "frozen_target_storage_mAh_g": 450.0,
+    "frozen_optimal_stability_eV": -4.5,
+    "coherency_tolerance": 0.2,
+    "n_incoherent": 7,
+    "n_chemistry_invalid": 0,
+    "n_valid_discoveries": 8,
+    "best_pv_score": 0.2844034573773642,
+    "best_battery_score": 0.09590271688013555,
+    "best_combined_pv_plus_battery": 0.3803061742574998,
+    "final_training_weights": {
+      "pv_bandgap": 1.3467956945011401,
+      "battery_storage": 1.3467956945011401,
+      "stability": 1.4071004226562505,
+      "cost": 1.0141762389773246
+    }
+  },
+  "discoveries": [
+    {
+      "iteration": 1,
+      "formula": "Na-Al-P-C",
+      "formula_compact": "NaAlPC",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Na",
+          "radius": 1.66,
+          "electronegativity": 0.93,
+          "mass": 22.99,
+          "cost": 5.0,
+          "toxicity": 0.3,
+          "target_radius": 2.3349239227101535,
+          "target_en": 0.6577427519106868,
+          "target_mass": 1.7806085584841727,
+          "target_cost": 2.3190358932974062
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 1.5022385745300224,
+          "target_en": 2.5251673464257887,
+          "target_mass": 2.536522244058348,
+          "target_cost": 2.722663527750698
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.6312091483092748,
+          "target_en": 0.8096974742712373,
+          "target_mass": 1.1811430882425995,
+          "target_cost": 1.894094289965064
+        },
+        {
+          "role": "X-site anion",
+          "element": "C",
+          "radius": 0.76,
+          "electronegativity": 2.55,
+          "mass": 12.01,
+          "cost": 10.0,
+          "toxicity": 0.0,
+          "target_radius": 2.40426745418782,
+          "target_en": 1.0023636656648267,
+          "target_mass": 1.6475712422514524,
+          "target_cost": 2.77379990683946
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.1900463021964572,
+        "storage_mAh_g": -0.6894742163360422,
+        "pv_score": 0.11811600290814502,
+        "battery_score": 0.051724498487010016
+      },
+      "oracle_true": {
+        "bandgap_eV": 2.983823354835687,
+        "storage_mAh_g": 500.0,
+        "stability_eV": -1.2561302143262365,
+        "pv_score": 0.2701129315388096,
+        "battery_score": 0.2857142857142857,
+        "stability_score": 0.0,
+        "cost_penalty": 0.024273984044631575
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": false,
+        "pv_disagreement": 0.1519969286306646,
+        "battery_disagreement": 0.23398978722727568
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "INCOHERENT -- AI prediction does not match oracle. NOT a discovery."
+      }
+    },
+    {
+      "iteration": 2,
+      "formula": "Li-Al-P-S",
+      "formula_compact": "LiAlPS",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Li",
+          "radius": 1.28,
+          "electronegativity": 0.98,
+          "mass": 6.94,
+          "cost": 50.0,
+          "toxicity": 0.2,
+          "target_radius": 0.7746146608972304,
+          "target_en": 1.9920852950188346,
+          "target_mass": 1.8305407346864806,
+          "target_cost": 2.596214730870536
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 2.2827908111785273,
+          "target_en": 0.5486716026150384,
+          "target_mass": 2.8203645828262776,
+          "target_cost": 1.455383754764569
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.3926271874330673,
+          "target_en": 0.847887114064908,
+          "target_mass": 1.3695652586430809,
+          "target_cost": 2.4083719831969694
+        },
+        {
+          "role": "X-site anion",
+          "element": "S",
+          "radius": 1.05,
+          "electronegativity": 2.58,
+          "mass": 32.06,
+          "cost": 1.0,
+          "toxicity": 0.2,
+          "target_radius": 2.5,
+          "target_en": 0.5122385753209857,
+          "target_mass": 2.4447056350733045,
+          "target_cost": 2.9759873367578993
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004624447499396,
+        "storage_mAh_g": -0.6894740263849669,
+        "pv_score": 0.11811589249191018,
+        "battery_score": 0.05172436897970566
+      },
+      "oracle_true": {
+        "bandgap_eV": 5.016226420082562,
+        "storage_mAh_g": 96.01645620711687,
+        "stability_eV": 5.0,
+        "pv_score": 0.06889595279964024,
+        "battery_score": 0.0079173837301,
+        "stability_score": 1.0,
+        "cost_penalty": 0.023589894513974932
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": true,
+        "pv_disagreement": 0.04921993969226994,
+        "battery_disagreement": 0.043806985249605655
+      },
+      "status": {
+        "declared_new_best": true,
+        "note": "NEW BEST COMBINED MATERIAL (PV+Battery=0.077)"
+      }
+    },
+    {
+      "iteration": 3,
+      "formula": "Na-Al-P-H",
+      "formula_compact": "NaAlPH",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Na",
+          "radius": 1.66,
+          "electronegativity": 0.93,
+          "mass": 22.99,
+          "cost": 5.0,
+          "toxicity": 0.3,
+          "target_radius": 2.5,
+          "target_en": 1.1347665005751644,
+          "target_mass": 2.458689915053246,
+          "target_cost": 2.605182787617966
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 1.910319757610379,
+          "target_en": 0.7148575670869876,
+          "target_mass": 1.0000211948976334,
+          "target_cost": 1.0409516739018725
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 2.5,
+          "target_en": 2.0121218337994917,
+          "target_mass": 1.0881177749927677,
+          "target_cost": 2.315495892687156
+        },
+        {
+          "role": "X-site anion",
+          "element": "H",
+          "radius": 0.31,
+          "electronegativity": 2.2,
+          "mass": 1.008,
+          "cost": 1.0,
+          "toxicity": 0.0,
+          "target_radius": 0.7398813277674313,
+          "target_en": 1.7304753913411246,
+          "target_mass": 1.4592950405246234,
+          "target_cost": 1.3337375953244333
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004597831340678,
+        "storage_mAh_g": -0.689473150502183,
+        "pv_score": 0.1181153832958263,
+        "battery_score": 0.05172377180351656
+      },
+      "oracle_true": {
+        "bandgap_eV": 1.71058521506209,
+        "storage_mAh_g": 500.0,
+        "stability_eV": -2.7196963619827894,
+        "pv_score": 0.8792496541236862,
+        "battery_score": 0.2857142857142857,
+        "stability_score": 0.0,
+        "cost_penalty": 0.018238419873828567
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": false,
+        "pv_disagreement": 0.7611342708278599,
+        "battery_disagreement": 0.23399051391076914
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "INCOHERENT -- AI prediction does not match oracle. NOT a discovery."
+      }
+    },
+    {
+      "iteration": 4,
+      "formula": "Na-Al-H-N",
+      "formula_compact": "NaAlHN",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Na",
+          "radius": 1.66,
+          "electronegativity": 0.93,
+          "mass": 22.99,
+          "cost": 5.0,
+          "toxicity": 0.3,
+          "target_radius": 2.5,
+          "target_en": 2.3763227235831685,
+          "target_mass": 1.1214180173236006,
+          "target_cost": 1.0000164159229767
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 0.8162795111734441,
+          "target_en": 1.0268459227535467,
+          "target_mass": 2.101488613827691,
+          "target_cost": 1.140099596115724
+        },
+        {
+          "role": "X-site anion",
+          "element": "H",
+          "radius": 0.31,
+          "electronegativity": 2.2,
+          "mass": 1.008,
+          "cost": 1.0,
+          "toxicity": 0.0,
+          "target_radius": 0.6607705875239197,
+          "target_en": 0.6608823220767087,
+          "target_mass": 2.8887881882813544,
+          "target_cost": 2.3227539085076083
+        },
+        {
+          "role": "X-site anion",
+          "element": "N",
+          "radius": 0.71,
+          "electronegativity": 3.04,
+          "mass": 14.01,
+          "cost": 1.0,
+          "toxicity": 0.0,
+          "target_radius": 1.4032700891834904,
+          "target_en": 2.908435127533275,
+          "target_mass": 2.169545101227171,
+          "target_cost": 2.049621362636997
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004607709398952,
+        "storage_mAh_g": -0.6894734755675264,
+        "pv_score": 0.11811557228366665,
+        "battery_score": 0.05172399343372352
+      },
+      "oracle_true": {
+        "bandgap_eV": 5.970948039621937,
+        "storage_mAh_g": 119.19434944388784,
+        "stability_eV": 5.0,
+        "pv_score": 0.044552003384639854,
+        "battery_score": 0.009055315244746395,
+        "stability_score": 1.0,
+        "cost_penalty": 0.016281228207958263
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": true,
+        "pv_disagreement": 0.0735635688990268,
+        "battery_disagreement": 0.04266867818897713
+      },
+      "status": {
+        "declared_new_best": true,
+        "note": "NEW BEST BATTERY MATERIAL (Battery=0.009)"
+      }
+    },
+    {
+      "iteration": 5,
+      "formula": "Li-Al-N-P",
+      "formula_compact": "LiAlNP",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Li",
+          "radius": 1.28,
+          "electronegativity": 0.98,
+          "mass": 6.94,
+          "cost": 50.0,
+          "toxicity": 0.2,
+          "target_radius": 1.8659974941376054,
+          "target_en": 2.5499190052157723,
+          "target_mass": 2.2891300176063165,
+          "target_cost": 1.4359853317541635
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 1.0011975548754213,
+          "target_en": 2.6009628049531583,
+          "target_mass": 1.3437041309692275,
+          "target_cost": 1.0000049940196913
+        },
+        {
+          "role": "X-site anion",
+          "element": "N",
+          "radius": 0.71,
+          "electronegativity": 3.04,
+          "mass": 14.01,
+          "cost": 1.0,
+          "toxicity": 0.0,
+          "target_radius": 0.9942664936368939,
+          "target_en": 2.9463441188992703,
+          "target_mass": 2.9969346524414333,
+          "target_cost": 1.5289241195090502
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.9524172234182877,
+          "target_en": 1.4126920066368018,
+          "target_mass": 1.0356669334170459,
+          "target_cost": 2.981937062644513
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.1900463119594896,
+        "storage_mAh_g": -0.6894742484645323,
+        "pv_score": 0.11811602158359186,
+        "battery_score": 0.05172452039193548
+      },
+      "oracle_true": {
+        "bandgap_eV": 4.242985217701928,
+        "storage_mAh_g": 118.4289457535189,
+        "stability_eV": -1.5469351716786077,
+        "pv_score": 0.10607464934873134,
+        "battery_score": 0.00901393305150638,
+        "stability_score": 0.0,
+        "cost_penalty": 0.017367128769818545
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": true,
+        "pv_disagreement": 0.012041372234860515,
+        "battery_disagreement": 0.042710587340429096
+      },
+      "status": {
+        "declared_new_best": true,
+        "note": "NEW BEST COMBINED MATERIAL (PV+Battery=0.115)"
+      }
+    },
+    {
+      "iteration": 6,
+      "formula": "Na-Al-P-H",
+      "formula_compact": "NaAlPH",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Na",
+          "radius": 1.66,
+          "electronegativity": 0.93,
+          "mass": 22.99,
+          "cost": 5.0,
+          "toxicity": 0.3,
+          "target_radius": 2.130228440503956,
+          "target_en": 2.6163624445792966,
+          "target_mass": 1.0000102771848387,
+          "target_cost": 2.430886669686052
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 2.1856275319586005,
+          "target_en": 2.60612985564893,
+          "target_mass": 1.6076042951241065,
+          "target_cost": 2.648106473597573
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.967084051849235,
+          "target_en": 1.4716544327808416,
+          "target_mass": 1.6958654856251676,
+          "target_cost": 1.0000102771848387
+        },
+        {
+          "role": "X-site anion",
+          "element": "H",
+          "radius": 0.31,
+          "electronegativity": 2.2,
+          "mass": 1.008,
+          "cost": 1.0,
+          "toxicity": 0.0,
+          "target_radius": 1.93372614375047,
+          "target_en": 0.6785065751136224,
+          "target_mass": 1.0680883707320727,
+          "target_cost": 1.207651863635913
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004620359033392,
+        "storage_mAh_g": -0.6894738918412717,
+        "pv_score": 0.1181158142806049,
+        "battery_score": 0.05172427724846748
+      },
+      "oracle_true": {
+        "bandgap_eV": 3.0649157745836613,
+        "storage_mAh_g": 484.2200882396174,
+        "stability_eV": 0.9002794793138912,
+        "pv_score": 0.2515511632436497,
+        "battery_score": 0.4606141635806089,
+        "stability_score": 1.0,
+        "cost_penalty": 0.01821663821026094
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": false,
+        "pv_disagreement": 0.13343534896304476,
+        "battery_disagreement": 0.4088898863321414
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "INCOHERENT -- AI prediction does not match oracle. NOT a discovery."
+      }
+    },
+    {
+      "iteration": 7,
+      "formula": "Li-Al-P-C",
+      "formula_compact": "LiAlPC",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Li",
+          "radius": 1.28,
+          "electronegativity": 0.98,
+          "mass": 6.94,
+          "cost": 50.0,
+          "toxicity": 0.2,
+          "target_radius": 1.4437061155508961,
+          "target_en": 2.173425022948116,
+          "target_mass": 2.6459460265413597,
+          "target_cost": 1.8280627685049888
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 1.0314521499796063,
+          "target_en": 1.8770428003458048,
+          "target_mass": 2.357266249216393,
+          "target_cost": 1.0000274994076428
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 2.5,
+          "target_en": 1.6600756661638882,
+          "target_mass": 1.5172478599743442,
+          "target_cost": 1.0000274994076428
+        },
+        {
+          "role": "X-site anion",
+          "element": "C",
+          "radius": 0.76,
+          "electronegativity": 2.55,
+          "mass": 12.01,
+          "cost": 10.0,
+          "toxicity": 0.0,
+          "target_radius": 2.0266207039089243,
+          "target_en": 0.8491787890815079,
+          "target_mass": 1.0181510336490784,
+          "target_cost": 1.0000274994076428
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004584768884275,
+        "storage_mAh_g": -0.6894727206466265,
+        "pv_score": 0.11811513336613877,
+        "battery_score": 0.05172347872577598
+      },
+      "oracle_true": {
+        "bandgap_eV": 1.5578753454755232,
+        "storage_mAh_g": 75.21429780307008,
+        "stability_eV": -4.096285871377935,
+        "pv_score": 0.954681583916577,
+        "battery_score": 0.007068920147667399,
+        "stability_score": 0.0,
+        "cost_penalty": 0.012070363166819793
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": false,
+        "pv_disagreement": 0.8365664505504382,
+        "battery_disagreement": 0.04465455857810858
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "INCOHERENT -- AI prediction does not match oracle. NOT a discovery."
+      }
+    },
+    {
+      "iteration": 8,
+      "formula": "Li-Al-P-S",
+      "formula_compact": "LiAlPS",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Li",
+          "radius": 1.28,
+          "electronegativity": 0.98,
+          "mass": 6.94,
+          "cost": 50.0,
+          "toxicity": 0.2,
+          "target_radius": 0.9734827210430254,
+          "target_en": 1.5208773612632076,
+          "target_mass": 2.1387812625976865,
+          "target_cost": 1.7968355455499652
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 0.6664194080024683,
+          "target_en": 2.5619156240889867,
+          "target_mass": 1.0000222508841106,
+          "target_cost": 1.0000222508841106
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.557429524346205,
+          "target_en": 1.6832406968177993,
+          "target_mass": 1.1350388189122658,
+          "target_cost": 1.2582782227731018
+        },
+        {
+          "role": "X-site anion",
+          "element": "S",
+          "radius": 1.05,
+          "electronegativity": 2.58,
+          "mass": 32.06,
+          "cost": 1.0,
+          "toxicity": 0.2,
+          "target_radius": 2.5,
+          "target_en": 2.379817304801335,
+          "target_mass": 1.6854644400246912,
+          "target_cost": 2.571463691091897
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004595645914457,
+        "storage_mAh_g": -0.6894730785847094,
+        "pv_score": 0.11811534148251057,
+        "battery_score": 0.051723722769912904
+      },
+      "oracle_true": {
+        "bandgap_eV": 2.9262319053485535,
+        "storage_mAh_g": 352.90605956815574,
+        "stability_eV": -3.8357027280351277,
+        "pv_score": 0.2844034573773642,
+        "battery_score": 0.09590271688013555,
+        "stability_score": 0.0,
+        "cost_penalty": 0.016566499275747687
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": true,
+        "pv_disagreement": 0.16628811589485365,
+        "battery_disagreement": 0.04417899411022264
+      },
+      "status": {
+        "declared_new_best": true,
+        "note": "NEW BEST COMBINED MATERIAL (PV+Battery=0.380)"
+      }
+    },
+    {
+      "iteration": 9,
+      "formula": "Na-Al-P-S",
+      "formula_compact": "NaAlPS",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Na",
+          "radius": 1.66,
+          "electronegativity": 0.93,
+          "mass": 22.99,
+          "cost": 5.0,
+          "toxicity": 0.3,
+          "target_radius": 2.18984698917766,
+          "target_en": 2.8105241025874057,
+          "target_mass": 2.100816319708145,
+          "target_cost": 1.1862550236032419
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 2.5,
+          "target_en": 1.454329683708507,
+          "target_mass": 1.0000013243599228,
+          "target_cost": 2.5158475152049182
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.4624803934441124,
+          "target_en": 0.7936577038385768,
+          "target_mass": 2.9098617278789862,
+          "target_cost": 2.206527165759316
+        },
+        {
+          "role": "X-site anion",
+          "element": "S",
+          "radius": 1.05,
+          "electronegativity": 2.58,
+          "mass": 32.06,
+          "cost": 1.0,
+          "toxicity": 0.2,
+          "target_radius": 2.5,
+          "target_en": 2.241698832388186,
+          "target_mass": 2.1725363047506607,
+          "target_cost": 2.9754810878574776
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004638675025284,
+        "storage_mAh_g": -0.6894744945893581,
+        "pv_score": 0.11811616464495525,
+        "battery_score": 0.051724688197106634
+      },
+      "oracle_true": {
+        "bandgap_eV": 4.51198660842663,
+        "storage_mAh_g": 216.91218391005503,
+        "stability_eV": 5.0,
+        "pv_score": 0.0904036601204606,
+        "battery_score": 0.018073400776521076,
+        "stability_score": 1.0,
+        "cost_penalty": 0.022210276981062385
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": true,
+        "pv_disagreement": 0.027712504524494655,
+        "battery_disagreement": 0.033651287420585554
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "Coherent and chemically valid, but did not exceed any prior best."
+      }
+    },
+    {
+      "iteration": 10,
+      "formula": "Li-Al-H-P",
+      "formula_compact": "LiAlHP",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Li",
+          "radius": 1.28,
+          "electronegativity": 0.98,
+          "mass": 6.94,
+          "cost": 50.0,
+          "toxicity": 0.2,
+          "target_radius": 1.5987937113863424,
+          "target_en": 1.4895903663266994,
+          "target_mass": 1.7707483281730634,
+          "target_cost": 1.9232818458940624
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 0.5648553643479783,
+          "target_en": 1.272614057410079,
+          "target_mass": 2.8963520339982005,
+          "target_cost": 1.0000480111635557
+        },
+        {
+          "role": "X-site anion",
+          "element": "H",
+          "radius": 0.31,
+          "electronegativity": 2.2,
+          "mass": 1.008,
+          "cost": 1.0,
+          "toxicity": 0.0,
+          "target_radius": 0.6495051930840114,
+          "target_en": 1.989918710376822,
+          "target_mass": 2.052050628158755,
+          "target_cost": 2.8498260588201374
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.585497249171128,
+          "target_en": 0.96198625543393,
+          "target_mass": 1.0000480111635557,
+          "target_cost": 1.0000480111635557
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004542084856899,
+        "storage_mAh_g": -0.6894713160183683,
+        "pv_score": 0.11811431653473956,
+        "battery_score": 0.05172252103474322
+      },
+      "oracle_true": {
+        "bandgap_eV": 5.214117068988897,
+        "storage_mAh_g": 244.83060757832504,
+        "stability_eV": 1.3130603586911216,
+        "pv_score": 0.06246570997856347,
+        "battery_score": 0.023204828311909946,
+        "stability_score": 1.0,
+        "cost_penalty": 0.016933009817603276
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": true,
+        "pv_disagreement": 0.05564860655617609,
+        "battery_disagreement": 0.028517692722833277
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "Coherent and chemically valid, but did not exceed any prior best."
+      }
+    },
+    {
+      "iteration": 11,
+      "formula": "Na-Al-P-C",
+      "formula_compact": "NaAlPC",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Na",
+          "radius": 1.66,
+          "electronegativity": 0.93,
+          "mass": 22.99,
+          "cost": 5.0,
+          "toxicity": 0.3,
+          "target_radius": 2.409097964785731,
+          "target_en": 1.899409610963262,
+          "target_mass": 2.973967532699006,
+          "target_cost": 1.359095330581302
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 1.4175801579148342,
+          "target_en": 1.276067288811192,
+          "target_mass": 1.1137658155654881,
+          "target_cost": 2.946543216473513
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.4908157021734276,
+          "target_en": 1.6881907770173241,
+          "target_mass": 1.000013926952837,
+          "target_cost": 1.9035608782748872
+        },
+        {
+          "role": "X-site anion",
+          "element": "C",
+          "radius": 0.76,
+          "electronegativity": 2.55,
+          "mass": 12.01,
+          "cost": 10.0,
+          "toxicity": 0.0,
+          "target_radius": 2.439443547065024,
+          "target_en": 0.598691449666354,
+          "target_mass": 1.5204454357079007,
+          "target_cost": 1.4969146408331604
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.1900461284424038,
+        "storage_mAh_g": -0.6894736445444214,
+        "pv_score": 0.1181156705193131,
+        "battery_score": 0.05172410864211336
+      },
+      "oracle_true": {
+        "bandgap_eV": 3.3112784485496523,
+        "storage_mAh_g": 155.39819060100294,
+        "stability_eV": -2.3238405100086434,
+        "pv_score": 0.2046689606554709,
+        "battery_score": 0.011390789663164484,
+        "stability_score": 0.0,
+        "cost_penalty": 0.019265285165407157
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": true,
+        "pv_disagreement": 0.08655329013615781,
+        "battery_disagreement": 0.04033331897894887
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "Coherent and chemically valid, but did not exceed any prior best."
+      }
+    },
+    {
+      "iteration": 12,
+      "formula": "Li-Al-P-C",
+      "formula_compact": "LiAlPC",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Li",
+          "radius": 1.28,
+          "electronegativity": 0.98,
+          "mass": 6.94,
+          "cost": 50.0,
+          "toxicity": 0.2,
+          "target_radius": 0.661291273200965,
+          "target_en": 1.8477795597735818,
+          "target_mass": 2.583563105700478,
+          "target_cost": 2.4368188913962925
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 2.2796401883038095,
+          "target_en": 2.3224234314103374,
+          "target_mass": 2.3359805603291326,
+          "target_cost": 1.2608372697376862
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 2.5,
+          "target_en": 0.6116567412891409,
+          "target_mass": 2.378826123703857,
+          "target_cost": 2.29182358534485
+        },
+        {
+          "role": "X-site anion",
+          "element": "C",
+          "radius": 0.76,
+          "electronegativity": 2.55,
+          "mass": 12.01,
+          "cost": 10.0,
+          "toxicity": 0.0,
+          "target_radius": 1.5027871067201757,
+          "target_en": 2.859456543420218,
+          "target_mass": 2.2131843692931286,
+          "target_cost": 1.000003048278711
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004635168988054,
+        "storage_mAh_g": -0.6894743792108405,
+        "pv_score": 0.11811609758159732,
+        "battery_score": 0.051724609533456464
+      },
+      "oracle_true": {
+        "bandgap_eV": 2.526342703273489,
+        "storage_mAh_g": 500.0,
+        "stability_eV": 3.3304736007410893,
+        "pv_score": 0.4153843389337055,
+        "battery_score": 0.2857142857142857,
+        "stability_score": 1.0,
+        "cost_penalty": 0.01747370698689385
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": false,
+        "pv_disagreement": 0.2972682413521082,
+        "battery_disagreement": 0.23398967618082922
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "INCOHERENT -- AI prediction does not match oracle. NOT a discovery."
+      }
+    },
+    {
+      "iteration": 13,
+      "formula": "Na-Al-H-P",
+      "formula_compact": "NaAlHP",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Na",
+          "radius": 1.66,
+          "electronegativity": 0.93,
+          "mass": 22.99,
+          "cost": 5.0,
+          "toxicity": 0.3,
+          "target_radius": 2.5,
+          "target_en": 2.0222277821789105,
+          "target_mass": 2.4544273435821213,
+          "target_cost": 2.659624649223669
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 1.1641539615753036,
+          "target_en": 1.7879930393032841,
+          "target_mass": 1.7125710101419909,
+          "target_cost": 2.9652778773629787
+        },
+        {
+          "role": "X-site anion",
+          "element": "H",
+          "radius": 0.31,
+          "electronegativity": 2.2,
+          "mass": 1.008,
+          "cost": 1.0,
+          "toxicity": 0.0,
+          "target_radius": 0.5824981332362549,
+          "target_en": 1.1425051055326176,
+          "target_mass": 2.4270904924585675,
+          "target_cost": 2.3193615476545317
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.816545052397899,
+          "target_en": 1.9976694877683983,
+          "target_mass": 1.0000043704957633,
+          "target_cost": 1.6951867159976994
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004632470523533,
+        "storage_mAh_g": -0.68947429040867,
+        "pv_score": 0.11811604596441616,
+        "battery_score": 0.051724548989059344
+      },
+      "oracle_true": {
+        "bandgap_eV": 6.0,
+        "storage_mAh_g": 222.69544386347113,
+        "stability_eV": 5.0,
+        "pv_score": 0.04402261001250242,
+        "battery_score": 0.018987091368315185,
+        "stability_score": 1.0,
+        "cost_penalty": 0.024098626975597198
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": true,
+        "pv_disagreement": 0.07409343595191374,
+        "battery_disagreement": 0.03273745762074416
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "Coherent and chemically valid, but did not exceed any prior best."
+      }
+    },
+    {
+      "iteration": 14,
+      "formula": "Li-Al-C-P",
+      "formula_compact": "LiAlCP",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Li",
+          "radius": 1.28,
+          "electronegativity": 0.98,
+          "mass": 6.94,
+          "cost": 50.0,
+          "toxicity": 0.2,
+          "target_radius": 1.0472335791253358,
+          "target_en": 2.982391144576022,
+          "target_mass": 2.5937213106002943,
+          "target_cost": 2.380044325257437
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 1.2255971209937335,
+          "target_en": 0.907698926316912,
+          "target_mass": 2.8483189058653346,
+          "target_cost": 2.7884917488190526
+        },
+        {
+          "role": "X-site anion",
+          "element": "C",
+          "radius": 0.76,
+          "electronegativity": 2.55,
+          "mass": 12.01,
+          "cost": 10.0,
+          "toxicity": 0.0,
+          "target_radius": 1.1050771457940536,
+          "target_en": 2.788447187483128,
+          "target_mass": 2.9292413378573103,
+          "target_cost": 1.1807160028394799
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 1.5178008425072862,
+          "target_en": 2.355206348644678,
+          "target_mass": 2.9756929038805287,
+          "target_cost": 1.9668079299771077
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004639263798448,
+        "storage_mAh_g": -0.6894745139650709,
+        "pv_score": 0.11811617590683461,
+        "battery_score": 0.05172470140720037
+      },
+      "oracle_true": {
+        "bandgap_eV": 4.445261067962546,
+        "storage_mAh_g": 490.1938857820652,
+        "stability_eV": 2.5022371069834577,
+        "pv_score": 0.09396159299034883,
+        "battery_score": 0.3823289904534659,
+        "stability_score": 1.0,
+        "cost_penalty": 0.02079015001723269
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": false,
+        "pv_disagreement": 0.024154582916485784,
+        "battery_disagreement": 0.33060428904626554
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "INCOHERENT -- AI prediction does not match oracle. NOT a discovery."
+      }
+    },
+    {
+      "iteration": 15,
+      "formula": "Li-Al-P-C",
+      "formula_compact": "LiAlPC",
+      "sites": [
+        {
+          "role": "A-site cation",
+          "element": "Li",
+          "radius": 1.28,
+          "electronegativity": 0.98,
+          "mass": 6.94,
+          "cost": 50.0,
+          "toxicity": 0.2,
+          "target_radius": 1.1846345488919907,
+          "target_en": 0.9473577175837918,
+          "target_mass": 1.3740324739002967,
+          "target_cost": 2.1130756421643695
+        },
+        {
+          "role": "B-site metal",
+          "element": "Al",
+          "radius": 1.21,
+          "electronegativity": 1.61,
+          "mass": 26.98,
+          "cost": 3.0,
+          "toxicity": 0.2,
+          "target_radius": 0.8495122050131834,
+          "target_en": 2.979870284071269,
+          "target_mass": 1.0000502333019192,
+          "target_cost": 1.604977400133628
+        },
+        {
+          "role": "X-site anion",
+          "element": "P",
+          "radius": 1.07,
+          "electronegativity": 2.19,
+          "mass": 30.97,
+          "cost": 20.0,
+          "toxicity": 0.3,
+          "target_radius": 2.5,
+          "target_en": 1.3461597686823612,
+          "target_mass": 1.0743323898527806,
+          "target_cost": 1.0000502333019192
+        },
+        {
+          "role": "X-site anion",
+          "element": "C",
+          "radius": 0.76,
+          "electronegativity": 2.55,
+          "mass": 12.01,
+          "cost": 10.0,
+          "toxicity": 0.0,
+          "target_radius": 1.1460349299851236,
+          "target_en": 2.7238492027944883,
+          "target_mass": 1.6533701075617429,
+          "target_cost": 1.0000502333019192
+        }
+      ],
+      "ai_prediction": {
+        "bandgap_eV": 0.19004537445764366,
+        "storage_mAh_g": -0.6894711633571934,
+        "pv_score": 0.11811422774503724,
+        "battery_score": 0.051722416948076784
+      },
+      "oracle_true": {
+        "bandgap_eV": 1.654253448003784,
+        "storage_mAh_g": 500.0,
+        "stability_eV": -2.5365922690479517,
+        "pv_score": 0.9101208104194304,
+        "battery_score": 0.2857142857142857,
+        "stability_score": 0.0,
+        "cost_penalty": 0.014295383772254588
+      },
+      "gates": {
+        "chemistry_valid": true,
+        "chemistry_note": "",
+        "coherent": false,
+        "pv_disagreement": 0.7920065826743932,
+        "battery_disagreement": 0.23399186876620892
+      },
+      "status": {
+        "declared_new_best": false,
+        "note": "INCOHERENT -- AI prediction does not match oracle. NOT a discovery."
+      }
+    }
+  ]
+}
