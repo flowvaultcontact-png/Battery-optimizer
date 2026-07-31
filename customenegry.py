@@ -1436,13 +1436,13 @@ def continuous_discovery_loop(best_genome: SystemGenome, evaluator: UniversalEne
     # ==================================================================
     # SAVE ALL DISCOVERIES (full structure + results) TO DISK
     # ------------------------------------------------------------------
-    # Three files are written to /home/z/my-project/download/:
+    # Three files are written to ./download/:
     #   prometheus_discoveries.json   -- machine-readable, full detail
     #   prometheus_discoveries.csv    -- tabular, one row per discovery
     #   prometheus_discoveries.txt    -- human-readable, full structure
     #                                    + ASCII art for every iteration
     # ==================================================================
-    save_dir = "/home/z/my-project/download"
+    save_dir = "./download"
     try:
         import json, csv, os
         os.makedirs(save_dir, exist_ok=True)
