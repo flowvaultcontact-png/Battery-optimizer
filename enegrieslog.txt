@@ -1,0 +1,1309 @@
+==========================================================================================
+EVOLUTION COMPLETE — Best System Discovered:
+==========================================================================================
+  Learning Rule (Plasticity):
+    Δw = jnp.exp(jnp.clip(jnp.abs((ctx['mem'] + (-ctx['reward']))), -10, 10))
+  Think Steps: 6 | Ops: 2 | Hidden: 32
+
+==========================================================================================
+PHASE 2: HONEST CONTINUOUS DISCOVERY
+==========================================================================================
+  Frozen PV target       : bandgap = 1.34 eV (Shockley-Queisser)
+  Frozen Battery target  : storage = 450.0 mAh/g
+  Frozen Stability target: -4.5 eV (Goldschmidt-ideal)
+  Sub-scores reported SEPARATELY (PV / Battery / Stability) -- never blended.
+  Coherency gate: a discovery only counts if AI prediction tracks the oracle.
+  Chemistry gate: A-site cation, B-site metal, X-site anions, no reuse.
+------------------------------------------------------------------------------------------
+[1] Initial Training on 500 known elemental combinations...
+
+[2.0] AI is searching for a better material...
+     Current training emphasis: pv=1.00 battery=1.00 stability=1.00 cost=1.00
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 1 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=2.98 eV | Storage=500.0 mAh/g | PV=0.270 | Battery=0.286 | Stab=0.000 | CostPen=0.024
+  Closest real formula: Na-Al-P-C
+  Chemistry valid: True
+  Coherency: pv_disagree=0.152 bat_disagree=0.234 -> INCOHERENT
+  Status: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+
+  ABX3-style unit cell for NaAlPC  (iter 1)
+
+        +-----+-----+
+        |     |     |
+        |  Na |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   C |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Na  [A-site cation]  r=1.66Å  EN=0.93  mass=23.0  cost=$5.0/kg  tox=0.30
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  C  [X-site anion]  r=0.76Å  EN=2.55  mass=12.0  cost=$10.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 2.984 eV   (target 1.34 eV)
+    Storage        = 500.0 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.270
+    Battery score  = 0.286
+    Stability      = 0.000
+    Cost penalty   = 0.024
+  Gates: chemistry=VALID  coherency=INCOHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 1)
+==========================================================================================
+Formula (dashed) : Na-Al-P-C
+Formula (compact): NaAlPC
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Na        1.660  0.93   22.99     5.0  0.30
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            C         0.760  2.55   12.01    10.0  0.00
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Na): target r=2.335 Å, EN=0.658, mass=1.78, cost=2.32
+  site 1 (Al): target r=1.502 Å, EN=2.525, mass=2.54, cost=2.72
+  site 2 ( P): target r=1.631 Å, EN=0.810, mass=1.18, cost=1.89
+  site 3 ( C): target r=2.404 Å, EN=1.002, mass=1.65, cost=2.77
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           2.984       2.794
+Storage (mAh/g)                         -0.689         500.000     500.689
+PV sub-score                             0.118           0.270       0.152
+Battery sub-score                        0.052           0.286       0.234
+Stability (eV)                              --          -1.256          --
+Stability sub-score                         --           0.000          --
+Cost penalty                                --           0.024          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): False  (pv_disagree=0.152, bat_disagree=0.234)
+
+STATUS: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.10 battery=1.10 stability=1.05 cost=1.00
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 501 materials, emphasis-weighted passes...
+
+[2.1] AI is searching for a better material...
+     Current training emphasis: pv=1.10 battery=1.10 stability=1.05 cost=1.00
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 2 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=5.02 eV | Storage=96.0 mAh/g | PV=0.069 | Battery=0.008 | Stab=1.000 | CostPen=0.024
+  Closest real formula: Li-Al-P-S
+  Chemistry valid: True
+  Coherency: pv_disagree=0.049 bat_disagree=0.044 -> COHERENT
+  Status: NEW BEST PV MATERIAL (PV=0.069)
+  Status: NEW BEST BATTERY MATERIAL (Battery=0.008)
+  Status: NEW BEST COMBINED MATERIAL (PV+Battery=0.077)
+
+  ABX3-style unit cell for LiAlPS  (iter 2)
+
+        +-----+-----+
+        |     |     |
+        |  Li |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   S |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Li  [A-site cation]  r=1.28Å  EN=0.98  mass=6.9  cost=$50.0/kg  tox=0.20
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  S  [X-site anion]  r=1.05Å  EN=2.58  mass=32.1  cost=$1.0/kg  tox=0.20
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 5.016 eV   (target 1.34 eV)
+    Storage        = 96.0 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.069
+    Battery score  = 0.008
+    Stability      = 1.000
+    Cost penalty   = 0.024
+  Gates: chemistry=VALID  coherency=COHERENT *** NEW BEST ***
+==========================================================================================
+MATERIAL RECORD  (iteration 2)
+==========================================================================================
+Formula (dashed) : Li-Al-P-S
+Formula (compact): LiAlPS
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Li        1.280  0.98    6.94    50.0  0.20
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            S         1.050  2.58   32.06     1.0  0.20
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Li): target r=0.775 Å, EN=1.992, mass=1.83, cost=2.60
+  site 1 (Al): target r=2.283 Å, EN=0.549, mass=2.82, cost=1.46
+  site 2 ( P): target r=1.393 Å, EN=0.848, mass=1.37, cost=2.41
+  site 3 ( S): target r=2.500 Å, EN=0.512, mass=2.44, cost=2.98
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           5.016       4.826
+Storage (mAh/g)                         -0.689          96.016      96.706
+PV sub-score                             0.118           0.069       0.049
+Battery sub-score                        0.052           0.008       0.044
+Stability (eV)                              --           5.000          --
+Stability sub-score                         --           1.000          --
+Cost penalty                                --           0.024          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): True  (pv_disagree=0.049, bat_disagree=0.044)
+
+STATUS: NEW BEST COMBINED MATERIAL (PV+Battery=0.077)
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.07 battery=1.07 stability=1.05 cost=1.00
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 502 materials, emphasis-weighted passes...
+
+[2.2] AI is searching for a better material...
+     Current training emphasis: pv=1.07 battery=1.07 stability=1.05 cost=1.00
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 3 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=1.71 eV | Storage=500.0 mAh/g | PV=0.879 | Battery=0.286 | Stab=0.000 | CostPen=0.018
+  Closest real formula: Na-Al-P-H
+  Chemistry valid: True
+  Coherency: pv_disagree=0.761 bat_disagree=0.234 -> INCOHERENT
+  Status: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+
+  ABX3-style unit cell for NaAlPH  (iter 3)
+
+        +-----+-----+
+        |     |     |
+        |  Na |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   H |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Na  [A-site cation]  r=1.66Å  EN=0.93  mass=23.0  cost=$5.0/kg  tox=0.30
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  H  [X-site anion]  r=0.31Å  EN=2.20  mass=1.0  cost=$1.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 1.711 eV   (target 1.34 eV)
+    Storage        = 500.0 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.879
+    Battery score  = 0.286
+    Stability      = 0.000
+    Cost penalty   = 0.018
+  Gates: chemistry=VALID  coherency=INCOHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 3)
+==========================================================================================
+Formula (dashed) : Na-Al-P-H
+Formula (compact): NaAlPH
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Na        1.660  0.93   22.99     5.0  0.30
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            H         0.310  2.20    1.01     1.0  0.00
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Na): target r=2.500 Å, EN=1.135, mass=2.46, cost=2.61
+  site 1 (Al): target r=1.910 Å, EN=0.715, mass=1.00, cost=1.04
+  site 2 ( P): target r=2.500 Å, EN=2.012, mass=1.09, cost=2.32
+  site 3 ( H): target r=0.740 Å, EN=1.730, mass=1.46, cost=1.33
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           1.711       1.521
+Storage (mAh/g)                         -0.689         500.000     500.689
+PV sub-score                             0.118           0.879       0.761
+Battery sub-score                        0.052           0.286       0.234
+Stability (eV)                              --          -2.720          --
+Stability sub-score                         --           0.000          --
+Cost penalty                                --           0.018          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): False  (pv_disagree=0.761, bat_disagree=0.234)
+
+STATUS: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.17 battery=1.17 stability=1.10 cost=1.00
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 503 materials, emphasis-weighted passes...
+
+[2.3] AI is searching for a better material...
+     Current training emphasis: pv=1.17 battery=1.17 stability=1.10 cost=1.00
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 4 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=5.97 eV | Storage=119.2 mAh/g | PV=0.045 | Battery=0.009 | Stab=1.000 | CostPen=0.016
+  Closest real formula: Na-Al-H-N
+  Chemistry valid: True
+  Coherency: pv_disagree=0.074 bat_disagree=0.043 -> COHERENT
+  Status: NEW BEST BATTERY MATERIAL (Battery=0.009)
+
+  ABX3-style unit cell for NaAlHN  (iter 4)
+
+        +-----+-----+
+        |     |     |
+        |  Na |   H |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   N |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Na  [A-site cation]  r=1.66Å  EN=0.93  mass=23.0  cost=$5.0/kg  tox=0.30
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  H  [X-site anion]  r=0.31Å  EN=2.20  mass=1.0  cost=$1.0/kg  tox=0.00
+    site 3:  N  [X-site anion]  r=0.71Å  EN=3.04  mass=14.0  cost=$1.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 5.971 eV   (target 1.34 eV)
+    Storage        = 119.2 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.045
+    Battery score  = 0.009
+    Stability      = 1.000
+    Cost penalty   = 0.016
+  Gates: chemistry=VALID  coherency=COHERENT *** NEW BEST ***
+==========================================================================================
+MATERIAL RECORD  (iteration 4)
+==========================================================================================
+Formula (dashed) : Na-Al-H-N
+Formula (compact): NaAlHN
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Na        1.660  0.93   22.99     5.0  0.30
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            H         0.310  2.20    1.01     1.0  0.00
+3     X-site anion                            N         0.710  3.04   14.01     1.0  0.00
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Na): target r=2.500 Å, EN=2.376, mass=1.12, cost=1.00
+  site 1 (Al): target r=0.816 Å, EN=1.027, mass=2.10, cost=1.14
+  site 2 ( H): target r=0.661 Å, EN=0.661, mass=2.89, cost=2.32
+  site 3 ( N): target r=1.403 Å, EN=2.908, mass=2.17, cost=2.05
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           5.971       5.781
+Storage (mAh/g)                         -0.689         119.194     119.884
+PV sub-score                             0.118           0.045       0.074
+Battery sub-score                        0.052           0.009       0.043
+Stability (eV)                              --           5.000          --
+Stability sub-score                         --           1.000          --
+Cost penalty                                --           0.016          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): True  (pv_disagree=0.074, bat_disagree=0.043)
+
+STATUS: NEW BEST BATTERY MATERIAL (Battery=0.009)
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.14 battery=1.14 stability=1.10 cost=1.00
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 504 materials, emphasis-weighted passes...
+
+[2.4] AI is searching for a better material...
+     Current training emphasis: pv=1.14 battery=1.14 stability=1.10 cost=1.00
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 5 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=4.24 eV | Storage=118.4 mAh/g | PV=0.106 | Battery=0.009 | Stab=0.000 | CostPen=0.017
+  Closest real formula: Li-Al-N-P
+  Chemistry valid: True
+  Coherency: pv_disagree=0.012 bat_disagree=0.043 -> COHERENT
+  Status: NEW BEST PV MATERIAL (PV=0.106)
+  Status: NEW BEST COMBINED MATERIAL (PV+Battery=0.115)
+
+  ABX3-style unit cell for LiAlNP  (iter 5)
+
+        +-----+-----+
+        |     |     |
+        |  Li |   N |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   P |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Li  [A-site cation]  r=1.28Å  EN=0.98  mass=6.9  cost=$50.0/kg  tox=0.20
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  N  [X-site anion]  r=0.71Å  EN=3.04  mass=14.0  cost=$1.0/kg  tox=0.00
+    site 3:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 4.243 eV   (target 1.34 eV)
+    Storage        = 118.4 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.106
+    Battery score  = 0.009
+    Stability      = 0.000
+    Cost penalty   = 0.017
+  Gates: chemistry=VALID  coherency=COHERENT *** NEW BEST ***
+==========================================================================================
+MATERIAL RECORD  (iteration 5)
+==========================================================================================
+Formula (dashed) : Li-Al-N-P
+Formula (compact): LiAlNP
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Li        1.280  0.98    6.94    50.0  0.20
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            N         0.710  3.04   14.01     1.0  0.00
+3     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Li): target r=1.866 Å, EN=2.550, mass=2.29, cost=1.44
+  site 1 (Al): target r=1.001 Å, EN=2.601, mass=1.34, cost=1.00
+  site 2 ( N): target r=0.994 Å, EN=2.946, mass=3.00, cost=1.53
+  site 3 ( P): target r=1.952 Å, EN=1.413, mass=1.04, cost=2.98
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           4.243       4.053
+Storage (mAh/g)                         -0.689         118.429     119.118
+PV sub-score                             0.118           0.106       0.012
+Battery sub-score                        0.052           0.009       0.043
+Stability (eV)                              --          -1.547          --
+Stability sub-score                         --           0.000          --
+Cost penalty                                --           0.017          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): True  (pv_disagree=0.012, bat_disagree=0.043)
+
+STATUS: NEW BEST COMBINED MATERIAL (PV+Battery=0.115)
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.10 battery=1.10 stability=1.16 cost=1.00
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 505 materials, emphasis-weighted passes...
+
+[2.5] AI is searching for a better material...
+     Current training emphasis: pv=1.10 battery=1.10 stability=1.16 cost=1.00
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 6 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=3.06 eV | Storage=484.2 mAh/g | PV=0.252 | Battery=0.461 | Stab=1.000 | CostPen=0.018
+  Closest real formula: Na-Al-P-H
+  Chemistry valid: True
+  Coherency: pv_disagree=0.133 bat_disagree=0.409 -> INCOHERENT
+  Status: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+
+  ABX3-style unit cell for NaAlPH  (iter 6)
+
+        +-----+-----+
+        |     |     |
+        |  Na |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   H |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Na  [A-site cation]  r=1.66Å  EN=0.93  mass=23.0  cost=$5.0/kg  tox=0.30
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  H  [X-site anion]  r=0.31Å  EN=2.20  mass=1.0  cost=$1.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 3.065 eV   (target 1.34 eV)
+    Storage        = 484.2 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.252
+    Battery score  = 0.461
+    Stability      = 1.000
+    Cost penalty   = 0.018
+  Gates: chemistry=VALID  coherency=INCOHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 6)
+==========================================================================================
+Formula (dashed) : Na-Al-P-H
+Formula (compact): NaAlPH
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Na        1.660  0.93   22.99     5.0  0.30
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            H         0.310  2.20    1.01     1.0  0.00
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Na): target r=2.130 Å, EN=2.616, mass=1.00, cost=2.43
+  site 1 (Al): target r=2.186 Å, EN=2.606, mass=1.61, cost=2.65
+  site 2 ( P): target r=1.967 Å, EN=1.472, mass=1.70, cost=1.00
+  site 3 ( H): target r=1.934 Å, EN=0.679, mass=1.07, cost=1.21
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           3.065       2.875
+Storage (mAh/g)                         -0.689         484.220     484.910
+PV sub-score                             0.118           0.252       0.133
+Battery sub-score                        0.052           0.461       0.409
+Stability (eV)                              --           0.900          --
+Stability sub-score                         --           1.000          --
+Cost penalty                                --           0.018          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): False  (pv_disagree=0.133, bat_disagree=0.409)
+
+STATUS: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.07 battery=1.21 stability=1.16 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 506 materials, emphasis-weighted passes...
+
+[2.6] AI is searching for a better material...
+     Current training emphasis: pv=1.07 battery=1.21 stability=1.16 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 7 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=1.56 eV | Storage=75.2 mAh/g | PV=0.955 | Battery=0.007 | Stab=0.000 | CostPen=0.012
+  Closest real formula: Li-Al-P-C
+  Chemistry valid: True
+  Coherency: pv_disagree=0.837 bat_disagree=0.045 -> INCOHERENT
+  Status: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+
+  ABX3-style unit cell for LiAlPC  (iter 7)
+
+        +-----+-----+
+        |     |     |
+        |  Li |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   C |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Li  [A-site cation]  r=1.28Å  EN=0.98  mass=6.9  cost=$50.0/kg  tox=0.20
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  C  [X-site anion]  r=0.76Å  EN=2.55  mass=12.0  cost=$10.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 1.558 eV   (target 1.34 eV)
+    Storage        = 75.2 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.955
+    Battery score  = 0.007
+    Stability      = 0.000
+    Cost penalty   = 0.012
+  Gates: chemistry=VALID  coherency=INCOHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 7)
+==========================================================================================
+Formula (dashed) : Li-Al-P-C
+Formula (compact): LiAlPC
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Li        1.280  0.98    6.94    50.0  0.20
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            C         0.760  2.55   12.01    10.0  0.00
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Li): target r=1.444 Å, EN=2.173, mass=2.65, cost=1.83
+  site 1 (Al): target r=1.031 Å, EN=1.877, mass=2.36, cost=1.00
+  site 2 ( P): target r=2.500 Å, EN=1.660, mass=1.52, cost=1.00
+  site 3 ( C): target r=2.027 Å, EN=0.849, mass=1.02, cost=1.00
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           1.558       1.368
+Storage (mAh/g)                         -0.689          75.214      75.904
+PV sub-score                             0.118           0.955       0.837
+Battery sub-score                        0.052           0.007       0.045
+Stability (eV)                              --          -4.096          --
+Stability sub-score                         --           0.000          --
+Cost penalty                                --           0.012          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): False  (pv_disagree=0.837, bat_disagree=0.045)
+
+STATUS: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.18 battery=1.18 stability=1.22 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 507 materials, emphasis-weighted passes...
+
+[2.7] AI is searching for a better material...
+     Current training emphasis: pv=1.18 battery=1.18 stability=1.22 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 8 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=2.93 eV | Storage=352.9 mAh/g | PV=0.284 | Battery=0.096 | Stab=0.000 | CostPen=0.017
+  Closest real formula: Li-Al-P-S
+  Chemistry valid: True
+  Coherency: pv_disagree=0.166 bat_disagree=0.044 -> COHERENT
+  Status: NEW BEST PV MATERIAL (PV=0.284)
+  Status: NEW BEST BATTERY MATERIAL (Battery=0.096)
+  Status: NEW BEST COMBINED MATERIAL (PV+Battery=0.380)
+
+  ABX3-style unit cell for LiAlPS  (iter 8)
+
+        +-----+-----+
+        |     |     |
+        |  Li |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   S |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Li  [A-site cation]  r=1.28Å  EN=0.98  mass=6.9  cost=$50.0/kg  tox=0.20
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  S  [X-site anion]  r=1.05Å  EN=2.58  mass=32.1  cost=$1.0/kg  tox=0.20
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 2.926 eV   (target 1.34 eV)
+    Storage        = 352.9 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.284
+    Battery score  = 0.096
+    Stability      = 0.000
+    Cost penalty   = 0.017
+  Gates: chemistry=VALID  coherency=COHERENT *** NEW BEST ***
+==========================================================================================
+MATERIAL RECORD  (iteration 8)
+==========================================================================================
+Formula (dashed) : Li-Al-P-S
+Formula (compact): LiAlPS
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Li        1.280  0.98    6.94    50.0  0.20
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            S         1.050  2.58   32.06     1.0  0.20
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Li): target r=0.973 Å, EN=1.521, mass=2.14, cost=1.80
+  site 1 (Al): target r=0.666 Å, EN=2.562, mass=1.00, cost=1.00
+  site 2 ( P): target r=1.557 Å, EN=1.683, mass=1.14, cost=1.26
+  site 3 ( S): target r=2.500 Å, EN=2.380, mass=1.69, cost=2.57
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           2.926       2.736
+Storage (mAh/g)                         -0.689         352.906     353.596
+PV sub-score                             0.118           0.284       0.166
+Battery sub-score                        0.052           0.096       0.044
+Stability (eV)                              --          -3.836          --
+Stability sub-score                         --           0.000          --
+Cost penalty                                --           0.017          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): True  (pv_disagree=0.166, bat_disagree=0.044)
+
+STATUS: NEW BEST COMBINED MATERIAL (PV+Battery=0.380)
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.30 battery=1.14 stability=1.28 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 508 materials, emphasis-weighted passes...
+
+[2.8] AI is searching for a better material...
+     Current training emphasis: pv=1.30 battery=1.14 stability=1.28 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 9 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=4.51 eV | Storage=216.9 mAh/g | PV=0.090 | Battery=0.018 | Stab=1.000 | CostPen=0.022
+  Closest real formula: Na-Al-P-S
+  Chemistry valid: True
+  Coherency: pv_disagree=0.028 bat_disagree=0.034 -> COHERENT
+  Status: Coherent and chemically valid, but did not exceed any prior best.
+
+  ABX3-style unit cell for NaAlPS  (iter 9)
+
+        +-----+-----+
+        |     |     |
+        |  Na |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   S |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Na  [A-site cation]  r=1.66Å  EN=0.93  mass=23.0  cost=$5.0/kg  tox=0.30
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  S  [X-site anion]  r=1.05Å  EN=2.58  mass=32.1  cost=$1.0/kg  tox=0.20
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 4.512 eV   (target 1.34 eV)
+    Storage        = 216.9 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.090
+    Battery score  = 0.018
+    Stability      = 1.000
+    Cost penalty   = 0.022
+  Gates: chemistry=VALID  coherency=COHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 9)
+==========================================================================================
+Formula (dashed) : Na-Al-P-S
+Formula (compact): NaAlPS
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Na        1.660  0.93   22.99     5.0  0.30
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            S         1.050  2.58   32.06     1.0  0.20
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Na): target r=2.190 Å, EN=2.811, mass=2.10, cost=1.19
+  site 1 (Al): target r=2.500 Å, EN=1.454, mass=1.00, cost=2.52
+  site 2 ( P): target r=1.462 Å, EN=0.794, mass=2.91, cost=2.21
+  site 3 ( S): target r=2.500 Å, EN=2.242, mass=2.17, cost=2.98
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           4.512       4.322
+Storage (mAh/g)                         -0.689         216.912     217.602
+PV sub-score                             0.118           0.090       0.028
+Battery sub-score                        0.052           0.018       0.034
+Stability (eV)                              --           5.000          --
+Stability sub-score                         --           1.000          --
+Cost penalty                                --           0.022          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): True  (pv_disagree=0.028, bat_disagree=0.034)
+
+STATUS: Coherent and chemically valid, but did not exceed any prior best.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.26 battery=1.11 stability=1.28 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 509 materials, emphasis-weighted passes...
+
+[2.9] AI is searching for a better material...
+     Current training emphasis: pv=1.26 battery=1.11 stability=1.28 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 10 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=5.21 eV | Storage=244.8 mAh/g | PV=0.062 | Battery=0.023 | Stab=1.000 | CostPen=0.017
+  Closest real formula: Li-Al-H-P
+  Chemistry valid: True
+  Coherency: pv_disagree=0.056 bat_disagree=0.029 -> COHERENT
+  Status: Coherent and chemically valid, but did not exceed any prior best.
+
+  ABX3-style unit cell for LiAlHP  (iter 10)
+
+        +-----+-----+
+        |     |     |
+        |  Li |   H |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   P |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Li  [A-site cation]  r=1.28Å  EN=0.98  mass=6.9  cost=$50.0/kg  tox=0.20
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  H  [X-site anion]  r=0.31Å  EN=2.20  mass=1.0  cost=$1.0/kg  tox=0.00
+    site 3:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 5.214 eV   (target 1.34 eV)
+    Storage        = 244.8 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.062
+    Battery score  = 0.023
+    Stability      = 1.000
+    Cost penalty   = 0.017
+  Gates: chemistry=VALID  coherency=COHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 10)
+==========================================================================================
+Formula (dashed) : Li-Al-H-P
+Formula (compact): LiAlHP
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Li        1.280  0.98    6.94    50.0  0.20
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            H         0.310  2.20    1.01     1.0  0.00
+3     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Li): target r=1.599 Å, EN=1.490, mass=1.77, cost=1.92
+  site 1 (Al): target r=0.565 Å, EN=1.273, mass=2.90, cost=1.00
+  site 2 ( H): target r=0.650 Å, EN=1.990, mass=2.05, cost=2.85
+  site 3 ( P): target r=1.585 Å, EN=0.962, mass=1.00, cost=1.00
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           5.214       5.024
+Storage (mAh/g)                         -0.689         244.831     245.520
+PV sub-score                             0.118           0.062       0.056
+Battery sub-score                        0.052           0.023       0.029
+Stability (eV)                              --           1.313          --
+Stability sub-score                         --           1.000          --
+Cost penalty                                --           0.017          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): True  (pv_disagree=0.056, bat_disagree=0.029)
+
+STATUS: Coherent and chemically valid, but did not exceed any prior best.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.22 battery=1.08 stability=1.28 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 510 materials, emphasis-weighted passes...
+
+[2.10] AI is searching for a better material...
+     Current training emphasis: pv=1.22 battery=1.08 stability=1.28 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 11 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=3.31 eV | Storage=155.4 mAh/g | PV=0.205 | Battery=0.011 | Stab=0.000 | CostPen=0.019
+  Closest real formula: Na-Al-P-C
+  Chemistry valid: True
+  Coherency: pv_disagree=0.087 bat_disagree=0.040 -> COHERENT
+  Status: Coherent and chemically valid, but did not exceed any prior best.
+
+  ABX3-style unit cell for NaAlPC  (iter 11)
+
+        +-----+-----+
+        |     |     |
+        |  Na |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   C |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Na  [A-site cation]  r=1.66Å  EN=0.93  mass=23.0  cost=$5.0/kg  tox=0.30
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  C  [X-site anion]  r=0.76Å  EN=2.55  mass=12.0  cost=$10.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 3.311 eV   (target 1.34 eV)
+    Storage        = 155.4 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.205
+    Battery score  = 0.011
+    Stability      = 0.000
+    Cost penalty   = 0.019
+  Gates: chemistry=VALID  coherency=COHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 11)
+==========================================================================================
+Formula (dashed) : Na-Al-P-C
+Formula (compact): NaAlPC
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Na        1.660  0.93   22.99     5.0  0.30
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            C         0.760  2.55   12.01    10.0  0.00
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Na): target r=2.409 Å, EN=1.899, mass=2.97, cost=1.36
+  site 1 (Al): target r=1.418 Å, EN=1.276, mass=1.11, cost=2.95
+  site 2 ( P): target r=1.491 Å, EN=1.688, mass=1.00, cost=1.90
+  site 3 ( C): target r=2.439 Å, EN=0.599, mass=1.52, cost=1.50
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           3.311       3.121
+Storage (mAh/g)                         -0.689         155.398     156.088
+PV sub-score                             0.118           0.205       0.087
+Battery sub-score                        0.052           0.011       0.040
+Stability (eV)                              --          -2.324          --
+Stability sub-score                         --           0.000          --
+Cost penalty                                --           0.019          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): True  (pv_disagree=0.087, bat_disagree=0.040)
+
+STATUS: Coherent and chemically valid, but did not exceed any prior best.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.18 battery=1.04 stability=1.34 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 511 materials, emphasis-weighted passes...
+
+[2.11] AI is searching for a better material...
+     Current training emphasis: pv=1.18 battery=1.04 stability=1.34 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 12 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=2.53 eV | Storage=500.0 mAh/g | PV=0.415 | Battery=0.286 | Stab=1.000 | CostPen=0.017
+  Closest real formula: Li-Al-P-C
+  Chemistry valid: True
+  Coherency: pv_disagree=0.297 bat_disagree=0.234 -> INCOHERENT
+  Status: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+
+  ABX3-style unit cell for LiAlPC  (iter 12)
+
+        +-----+-----+
+        |     |     |
+        |  Li |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   C |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Li  [A-site cation]  r=1.28Å  EN=0.98  mass=6.9  cost=$50.0/kg  tox=0.20
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  C  [X-site anion]  r=0.76Å  EN=2.55  mass=12.0  cost=$10.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 2.526 eV   (target 1.34 eV)
+    Storage        = 500.0 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.415
+    Battery score  = 0.286
+    Stability      = 1.000
+    Cost penalty   = 0.017
+  Gates: chemistry=VALID  coherency=INCOHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 12)
+==========================================================================================
+Formula (dashed) : Li-Al-P-C
+Formula (compact): LiAlPC
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Li        1.280  0.98    6.94    50.0  0.20
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            C         0.760  2.55   12.01    10.0  0.00
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Li): target r=0.661 Å, EN=1.848, mass=2.58, cost=2.44
+  site 1 (Al): target r=2.280 Å, EN=2.322, mass=2.34, cost=1.26
+  site 2 ( P): target r=2.500 Å, EN=0.612, mass=2.38, cost=2.29
+  site 3 ( C): target r=1.503 Å, EN=2.859, mass=2.21, cost=1.00
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           2.526       2.336
+Storage (mAh/g)                         -0.689         500.000     500.689
+PV sub-score                             0.118           0.415       0.297
+Battery sub-score                        0.052           0.286       0.234
+Stability (eV)                              --           3.330          --
+Stability sub-score                         --           1.000          --
+Cost penalty                                --           0.017          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): False  (pv_disagree=0.297, bat_disagree=0.234)
+
+STATUS: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.30 battery=1.15 stability=1.34 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 512 materials, emphasis-weighted passes...
+
+[2.12] AI is searching for a better material...
+     Current training emphasis: pv=1.30 battery=1.15 stability=1.34 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 13 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=6.00 eV | Storage=222.7 mAh/g | PV=0.044 | Battery=0.019 | Stab=1.000 | CostPen=0.024
+  Closest real formula: Na-Al-H-P
+  Chemistry valid: True
+  Coherency: pv_disagree=0.074 bat_disagree=0.033 -> COHERENT
+  Status: Coherent and chemically valid, but did not exceed any prior best.
+
+  ABX3-style unit cell for NaAlHP  (iter 13)
+
+        +-----+-----+
+        |     |     |
+        |  Na |   H |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   P |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Na  [A-site cation]  r=1.66Å  EN=0.93  mass=23.0  cost=$5.0/kg  tox=0.30
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  H  [X-site anion]  r=0.31Å  EN=2.20  mass=1.0  cost=$1.0/kg  tox=0.00
+    site 3:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 6.000 eV   (target 1.34 eV)
+    Storage        = 222.7 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.044
+    Battery score  = 0.019
+    Stability      = 1.000
+    Cost penalty   = 0.024
+  Gates: chemistry=VALID  coherency=COHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 13)
+==========================================================================================
+Formula (dashed) : Na-Al-H-P
+Formula (compact): NaAlHP
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Na        1.660  0.93   22.99     5.0  0.30
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            H         0.310  2.20    1.01     1.0  0.00
+3     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Na): target r=2.500 Å, EN=2.022, mass=2.45, cost=2.66
+  site 1 (Al): target r=1.164 Å, EN=1.788, mass=1.71, cost=2.97
+  site 2 ( H): target r=0.582 Å, EN=1.143, mass=2.43, cost=2.32
+  site 3 ( P): target r=1.817 Å, EN=1.998, mass=1.00, cost=1.70
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           6.000       5.810
+Storage (mAh/g)                         -0.689         222.695     223.385
+PV sub-score                             0.118           0.044       0.074
+Battery sub-score                        0.052           0.019       0.033
+Stability (eV)                              --           5.000          --
+Stability sub-score                         --           1.000          --
+Cost penalty                                --           0.024          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): True  (pv_disagree=0.074, bat_disagree=0.033)
+
+STATUS: Coherent and chemically valid, but did not exceed any prior best.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.26 battery=1.11 stability=1.34 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 513 materials, emphasis-weighted passes...
+
+[2.13] AI is searching for a better material...
+     Current training emphasis: pv=1.26 battery=1.11 stability=1.34 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 14 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=4.45 eV | Storage=490.2 mAh/g | PV=0.094 | Battery=0.382 | Stab=1.000 | CostPen=0.021
+  Closest real formula: Li-Al-C-P
+  Chemistry valid: True
+  Coherency: pv_disagree=0.024 bat_disagree=0.331 -> INCOHERENT
+  Status: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+
+  ABX3-style unit cell for LiAlCP  (iter 14)
+
+        +-----+-----+
+        |     |     |
+        |  Li |   C |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   P |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Li  [A-site cation]  r=1.28Å  EN=0.98  mass=6.9  cost=$50.0/kg  tox=0.20
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  C  [X-site anion]  r=0.76Å  EN=2.55  mass=12.0  cost=$10.0/kg  tox=0.00
+    site 3:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 4.445 eV   (target 1.34 eV)
+    Storage        = 490.2 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.094
+    Battery score  = 0.382
+    Stability      = 1.000
+    Cost penalty   = 0.021
+  Gates: chemistry=VALID  coherency=INCOHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 14)
+==========================================================================================
+Formula (dashed) : Li-Al-C-P
+Formula (compact): LiAlCP
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Li        1.280  0.98    6.94    50.0  0.20
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            C         0.760  2.55   12.01    10.0  0.00
+3     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Li): target r=1.047 Å, EN=2.982, mass=2.59, cost=2.38
+  site 1 (Al): target r=1.226 Å, EN=0.908, mass=2.85, cost=2.79
+  site 2 ( C): target r=1.105 Å, EN=2.788, mass=2.93, cost=1.18
+  site 3 ( P): target r=1.518 Å, EN=2.355, mass=2.98, cost=1.97
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           4.445       4.255
+Storage (mAh/g)                         -0.689         490.194     490.883
+PV sub-score                             0.118           0.094       0.024
+Battery sub-score                        0.052           0.382       0.331
+Stability (eV)                              --           2.502          --
+Stability sub-score                         --           1.000          --
+Cost penalty                                --           0.021          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): False  (pv_disagree=0.024, bat_disagree=0.331)
+
+STATUS: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.22 battery=1.22 stability=1.34 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 514 materials, emphasis-weighted passes...
+
+[2.14] AI is searching for a better material...
+     Current training emphasis: pv=1.22 battery=1.22 stability=1.34 cost=1.01
+     Frozen targets: Eg*=1.34 eV, Storage*=450.0 mAh/g
+------------------------------------------------------------------------------------------
+CONTINUOUS LOOP ITERATION 15 RESULTS:
+  AI Predicted:   Eg=0.19 eV | Storage=-0.7 mAh/g | PV=0.118 | Battery=0.052
+  Oracle (true):  Eg=1.65 eV | Storage=500.0 mAh/g | PV=0.910 | Battery=0.286 | Stab=0.000 | CostPen=0.014
+  Closest real formula: Li-Al-P-C
+  Chemistry valid: True
+  Coherency: pv_disagree=0.792 bat_disagree=0.234 -> INCOHERENT
+  Status: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+
+  ABX3-style unit cell for LiAlPC  (iter 15)
+
+        +-----+-----+
+        |     |     |
+        |  Li |   P |    <- A-site cation + X-site anion #1
+        |     |     |
+        +-----+-----+
+        |     |     |
+        |  Al |   C |    <- B-site metal  + X-site anion #2
+        |     |     |
+        +-----+-----+
+
+  Site details:
+    site 0: Li  [A-site cation]  r=1.28Å  EN=0.98  mass=6.9  cost=$50.0/kg  tox=0.20
+    site 1: Al  [B-site metal]  r=1.21Å  EN=1.61  mass=27.0  cost=$3.0/kg  tox=0.20
+    site 2:  P  [X-site anion]  r=1.07Å  EN=2.19  mass=31.0  cost=$20.0/kg  tox=0.30
+    site 3:  C  [X-site anion]  r=0.76Å  EN=2.55  mass=12.0  cost=$10.0/kg  tox=0.00
+
+  Computed properties (oracle / true physics):
+    Bandgap        = 1.654 eV   (target 1.34 eV)
+    Storage        = 500.0 mAh/g (target 450.0 mAh/g)
+    PV sub-score   = 0.910
+    Battery score  = 0.286
+    Stability      = 0.000
+    Cost penalty   = 0.014
+  Gates: chemistry=VALID  coherency=INCOHERENT
+==========================================================================================
+MATERIAL RECORD  (iteration 15)
+==========================================================================================
+Formula (dashed) : Li-Al-P-C
+Formula (compact): LiAlPC
+Architecture     : ABX3-style perovskite (A = cation, B = metal, X1/X2 = anions)
+
+FULL SITE-BY-SITE STRUCTURE:
+------------------------------------------------------------------------------------------
+Site  Role                                    Element    r(Å)    EN    Mass    Cost   Tox
+------------------------------------------------------------------------------------------
+0     A-site cation                           Li        1.280  0.98    6.94    50.0  0.20
+1     B-site metal                            Al        1.210  1.61   26.98     3.0  0.20
+2     X-site anion                            P         1.070  2.19   30.97    20.0  0.30
+3     X-site anion                            C         0.760  2.55   12.01    10.0  0.00
+------------------------------------------------------------------------------------------
+Inverse-designer targets (what gradient descent asked for at each site):
+  site 0 (Li): target r=1.185 Å, EN=0.947, mass=1.37, cost=2.11
+  site 1 (Al): target r=0.850 Å, EN=2.980, mass=1.00, cost=1.60
+  site 2 ( P): target r=2.500 Å, EN=1.346, mass=1.07, cost=1.00
+  site 3 ( C): target r=1.146 Å, EN=2.724, mass=1.65, cost=1.00
+
+RESULTS — AI PREDICTION vs ORACLE (TRUE PHYSICS):
+------------------------------------------------------------------------------------------
+Metric                            AI predicted   Oracle (true)      |diff|
+------------------------------------------------------------------------------------------
+Bandgap (eV)                             0.190           1.654       1.464
+Storage (mAh/g)                         -0.689         500.000     500.689
+PV sub-score                             0.118           0.910       0.792
+Battery sub-score                        0.052           0.286       0.234
+Stability (eV)                              --          -2.537          --
+Stability sub-score                         --           0.000          --
+Cost penalty                                --           0.014          --
+------------------------------------------------------------------------------------------
+Frozen targets : bandgap=1.34 eV (Shockley-Queisser) | storage=450.0 mAh/g | stability=-4.5 eV
+
+GATES:
+  Chemistry valid : True
+  Coherent (AI≈oracle within 0.20): False  (pv_disagree=0.792, bat_disagree=0.234)
+
+STATUS: INCOHERENT -- AI prediction does not match oracle. NOT a discovery.
+==========================================================================================
+  [TRAINING EMPHASIS UPDATED] pv=1.35 battery=1.35 stability=1.41 cost=1.01
+  (Note: targets and scoring formula are FROZEN -- only training emphasis adapts.)
+  [RETRAIN] 515 materials, emphasis-weighted passes...
+
+  [SAVED] Full discovery records (JSON)  -> /home/z/my-project/download\prometheus_discoveries.json
+  [SAVED] Tabular discovery records (CSV) -> /home/z/my-project/download\prometheus_discoveries.csv
+  [WARNING] Could not save discovery files: 'charmap' codec can't encode character '\u2248' in position 2535: character maps to <undefined>
+------------------------------------------------------------------------------------------
+CONTINUOUS DISCOVERY COMPLETE -- HONEST SUMMARY
+------------------------------------------------------------------------------------------
+  Total iterations:            15
+  Incoherent (AI != oracle):   7  (these were NOT counted as discoveries)
+  Chemistry-invalid:           0  (these were NOT counted as discoveries)
+  Valid discoveries:           8  (coherent + chemically valid)
+  Best PV sub-score:           0.284 / 1.000  (frozen target: bandgap=1.34 eV)
+  Best Battery sub-score:      0.096 / 1.000  (frozen target: storage=450.0 mAh/g)
+  Best combined PV+Battery:    0.380 / 2.000
+  Best combined formula:       Li-Al-P-S
+    Bandgap  = 2.926 eV   (target 1.34)
+    Storage  = 352.9 mAh/g (target 450.0)
+    Stability= 0.000  | CostPen=0.017
+    PV sub-score     = 0.284
+    Battery sub-score= 0.096
+------------------------------------------------------------------------------------------
+TRAINING EMPHASIS HISTORY (only this adapts -- targets are frozen):
+  initial: {'pv_bandgap': 1.0, 'battery_storage': 1.0, 'stability': 1.0, 'cost': 1.0}
+  final  : {'pv_bandgap': 1.3467956945011401, 'battery_storage': 1.3467956945011401, 'stability': 1.4071004226562505, 'cost': 1.0141762389773246}
+  revisions: 15
+==========================================================================================
